@@ -37,6 +37,8 @@ jobs:
           echo "_________________________________"
           sysctl user.max_user_namespaces
           echo "_________________________________"
+          sysctl kernel.unprivileged_userns_clone
+          echo "_________________________________"
           sudo sysctl -w kernel.unprivileged_userns_clone=1
           echo "_________________________________"
           sysctl kernel.unprivileged_userns_clone
