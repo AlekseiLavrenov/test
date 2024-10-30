@@ -1,4 +1,4 @@
-name: Gitea Actions Demo
+name: "TEST"
 on: push
 
 jobs:
