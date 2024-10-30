@@ -1,0 +1,42 @@
+name: Gitea Actions Demo
+run-name: ${{ gitea.actor }} is testing out Gitea Actions 🚀
+on: [push, workflow_dispatch]
+
+jobs:
+  Explore-Gitea-Actions:
+    runs-on: ubuntu-latest-noroot
+    steps:
+      - name: Create new user
+        run: |
+          sudo useradd -m -s /bin/bash myuser
+          echo 'myuser ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/myuser          
+      - name: Check users
+        run: |
+          echo -n "Default user is:"; whoami
+          echo ""
+          echo -n "Root user is:" ; sudo su -c "whoami"
+          echo "" 
+          echo -n "Manual created user is :" ; sudo su - myuser -c "whoami"          
+      - run: echo "🎉 The job was automatically triggered by a ${{ gitea.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by Gitea!"
+      - run: echo "🔎 The name of your branch is ${{ gitea.ref }} and your repository is ${{ gitea.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ gitea.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: Check user 2
+        run: whoami
+      - name: List files in the repository
+        run: |
+          ls ${{ gitea.workspace }}          
+      - name: TEST
+        run: |
+          echo "_________________________________"
+          sysctl user.max_user_namespaces
+          echo "_________________________________"
+          sudo sysctl -w user.max_user_namespaces=49152
+          echo "_________________________________"
+          sudo sysctl -w kernel.unprivileged_userns_clone=1
+          echo "_________________________________"          
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+      
