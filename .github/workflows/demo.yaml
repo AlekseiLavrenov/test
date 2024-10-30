@@ -2,7 +2,7 @@ name: "TEST"
 on: push
 
 jobs:
-  Explore-Gitea-Actions:
+  Explore-github-Actions:
     runs-on: ubuntu-latest
     steps:
       - name: Create new user
@@ -16,18 +16,18 @@ jobs:
           echo -n "Root user is:" ; sudo su -c "whoami"
           echo "" 
           echo -n "Manual created user is :" ; sudo su - myuser -c "whoami"          
-      - run: echo "🎉 The job was automatically triggered by a ${{ gitea.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by Gitea!"
-      - run: echo "🔎 The name of your branch is ${{ gitea.ref }} and your repository is ${{ gitea.repository }}."
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by github!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "💡 The ${{ gitea.repository }} repository has been cloned to the runner."
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Check user 2
         run: whoami
       - name: List files in the repository
         run: |
-          ls ${{ gitea.workspace }}          
+          ls ${{ github.workspace }}          
       - name: TEST
         run: |
           echo "_________________________________"
