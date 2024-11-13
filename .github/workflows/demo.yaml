@@ -11,7 +11,7 @@ jobs:
           echo 'myuser ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/myuser          
       - name: Check users
         run: |
-          echo "${{GITHUB_ACTIONS}}"
+          echo $GITHUB_ACTIONS
           echo -n "Default user is:"; whoami
           echo ""
           echo -n "Root user is:" ; sudo su -c "whoami"
