@@ -1,8 +1,8 @@
-name: Test MySQL Service on Ubuntu with Service Hostname
+name: Test 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   editorconfig:
