@@ -1,0 +1,16 @@
+name: Audit
+
+on:
+  workflow_dispatch:
+
+jobs:
+  audit:
+  runs-on: ubuntu-latest
+
+    steps:
+    - name: Who
+      run: whoami
+    - name: Ls
+      run: ls -la /var/lib/gems/3.2.0
+    - name: Install Bundler
+      run: gem install bundler --version 2.4.22
