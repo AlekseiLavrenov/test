@@ -10,6 +10,6 @@ jobs:
     - name: Who
       run: whoami
     - name: Ls
-      run: ls -la /var/lib/gems/3.2.0
+      run: ls -la /var/lib/gems/
     - name: Install Bundler
       run: gem install bundler --version 2.4.22
